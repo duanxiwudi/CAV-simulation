@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Nov  5 11:17:55 2019
-
+ STride
 @author: xiduan
 """
 
