@@ -35,9 +35,11 @@ Vissim= com.Dispatch("Vissim.Vissim.1000")
 
 #User input---------------------------------------------------- 
 # //input your fold directory which contains the Vissim file here//
-Path_of_COM_Basic_Commands_network = "C:\\Users\\xiduan\\OneDrive - University of Florida\\UF\\research\\2.Vissim AV&CV\\network" 
+system_dr = os.getcwd()
+
+Path_of_COM_Basic_Commands_network =  os.path.join(system_dr, "network")
 # // write your output fold directory here//
-Path_output_file = "C:\\Users\\xiduan\\OneDrive - University of Florida\\UF\\research\\2.Vissim AV&CV\\Document\\Task1\\"
+Path_output_file = os.path.join(system_dr, "output")
 # //input your network file and layout file name here//
 Network_file='network2.inpx'
 Layout_file='network2.layx'
@@ -246,8 +248,8 @@ while time_step < simulation_duration:
         time.sleep(time_sleep)
         ## update the traj file, here plus 0.01 
         traj = pd.DataFrame({'a':vehicle_ID,'b':vehicle_acc})
-        traj.to_csv(Path_output_file + "Trajectory.txt", header=None, index = None, sep=' ', mode='w')
-        log_file.to_csv(Path_output_file + "log.csv", header = None,  index = None,  mode='a')
+        traj.to_csv(Path_output_file + "\\Trajectory.txt", header=None, index = None, sep=' ', mode='w')
+        log_file.to_csv(Path_output_file + "\\log.csv", header = None,  index = None,  mode='a')
        
 
 

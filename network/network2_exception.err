@@ -1,0 +1,9 @@
+ExceptionCode = 3221225477
+ExceptionFlags = 0
+ExceptionAddress = 00007FFAF2FE0ED0
+Simulation: Run 0 26.5 sec, Critical error in Vissim during a COM call.
+Simulation: Run 0 26.6 sec, ExceptionCode = 3221225477
+ExceptionFlags = 16
+ExceptionAddress = 00007FFB34AB269D
+Simulation: Run 0 26.6 sec, Critical error in Vissim during a COM call.
+Simulation: Run 0 262.2 sec, 

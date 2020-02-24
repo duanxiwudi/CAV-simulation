@@ -1,0 +1,48 @@
+1. set the input file directory: the format of text trajetory file is:
+
+ID1  acceleration
+ID2  acceleration
+ID3  acceleration
+
+it need to be overrided for each time step;
+
+2. define a "find" function to return the acceleration for corresponding ID:
+// The function is used to return the index of key in the array, find the acceleration for the corresponding ID
+int find(long arr[], int n, long key)
+{
+	int index = -999;
+
+	for (int i = 0; i < n; i++){
+		if (arr[i] == key){
+			index = i;
+			break;
+		} 
+	}
+	return index;
+}
+
+3.  for each time step, under "case DRIVER_DATA_DESIRED_ACCELERATION "
+read the trajectory file, and assign acceleration to corresponding ID.
+
+
+		// also need to change the directory
+		myfile.open(inputPath);
+
+		/*read the trajectory.txt file here, store the ID its corresponding acceleration as array*/
+		for (int i = 0; !myfile.eof(); i++) {
+
+			myfile >> input_ID[i] >> input_acceleration[i];
+			size_num = i;
+		}
+		myfile.close();
+
+		/*if the Vehicle ID is not in the trajectory.txt, pass the default value from VISSIM or constant 0.3 to it.*/
+		if (find(input_ID, size_num, VehID) == -999) {
+			*double_value = 0.3;
+		} else {
+			/* if we could find corresponding vehicle, pass the designed acceleration to the correspoing vehicle.*/
+		 index_num = find(input_ID, size_num, VehID);
+		*double_value = input_acceleration[index_num];
+		} 
+		
+		return 1;

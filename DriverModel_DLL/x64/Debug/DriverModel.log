@@ -1,0 +1,5 @@
+﻿  DriverModel.cpp
+p:\stride on vissim cav\code\drivermodel_dll\drivermodel.cpp(127): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17134.0\ucrt\string.h(90): note: see declaration of 'strcat'
+     Creating library P:\STRIDE on VISSIM CAV\code\DriverModel_DLL\Lib\Debug\DriverModel.lib and object P:\STRIDE on VISSIM CAV\code\DriverModel_DLL\Lib\Debug\DriverModel.exp
+  DriverModel.vcxproj -> P:\STRIDE on VISSIM CAV\code\DriverModel_DLL\x64\Debug\DriverModel.dll
