@@ -13,11 +13,24 @@ Created on Fri Oct 19 10:25:09 2018
 """
 import win32com.client as com
 import os 
-os.chdir(r"P:\STRIDE on VISSIM CAV\code");
-
+from data_io import msgManager
 import time
 import pandas as pd
 import auModel
+# os.chdir(r"C:\Users\essie-adm-luan\Downloads\CAV-simulation-xixi\CAV-simulation-xixi");
+# LC: saves you the effort of updating the working directory
+currentDir = os.path.abspath(os.path.dirname(__file__)) 
+os.chdir(currentDir)
+
+# Loads the message manager that will send and receive the messages
+msgCfgFile = os.path.join(currentDir, "data_io_config", "Local_RIO_Vissim.yml")
+messageManager = msgManager(msgCfgFile)
+
+
+sendMessage = False # this is to avoid breaking the code for now. 
+
+
+
 
 
 # determine the type of data to be output
@@ -251,10 +264,35 @@ while time_step < simulation_duration:
         traj.to_csv(Path_output_file + "\\Trajectory.txt", header=None, index = None, sep=' ', mode='w')
         log_file.to_csv(Path_output_file + "\\log.csv", header = None,  index = None,  mode='a')
        
+        
 
-
-
-
+        """
+        LC: Xi,the function bellow will need a dataFrame containing the following 
+        headers. Make sure that the headers names match. If you add extra headers it does not matter.
+        
+        
+                 'No',
+                 'pos', # List [UTM easting (float), UTM northing (float)]
+                 'vel', # List [UTM easting dot (float), UTM northing dot (float)]
+                 'pos_rms', # List [UtM easting (float), UTM northing (float)]
+                 'vel_rms', # List [UTM easting dot (float), UTM northing dot (float)]
+                 'veh_type', # 0 or 1 -- 0 for CNV, 1 for CAV
+                 'veh_len', # float
+                 'max_accel', # float
+                 'max_decel', # float
+                 ])
+        """
+        if sendMessage:
+#            print('hi')
+            if len(log_file) > 0:
+                messageManager.send(log_file)
+                
+#                print(time_step)
+#                if time_step == 10:
+#                    print(time_step)
+#                    import pdb;pdb.set_trace()
+            
+    
 
 
 

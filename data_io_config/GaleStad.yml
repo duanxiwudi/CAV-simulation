@@ -1,0 +1,47 @@
+# Number of seconds to run
+run_for: 300
+num_roads: 4
+# Sensor configurations for each road
+road_1:
+  road_name: None 
+  radar: None
+  video: None
+  lidar: None
+road_2:
+  road_name: None
+  radar: None
+  video: None
+  lidar: None
+road_3:
+  road_name: None
+  radar: None
+  video: None
+  lidar: None
+road_4:
+  road_name: None
+  radar: None
+  video: None
+  lidar: None
+DSRC:
+  ip: 169.254.30.4
+  remote_port: 4200
+  local_port: 5201
+  track_port: 5202
+  tracking:
+    filter: KF
+    motion_model: CV
+data_association:
+  association_threshold: 150
+  n_scan: 1
+# Frequency (Hz) at which to output fused track states
+output_rate: 10
+output_ip: localhost
+output_port: 24601
+verbose: True
+disable_track_logging: False
+disable_dsrc: False
+disable_road:
+  road_1: True
+  road_2: True
+  road_3: True
+  road_4: True
