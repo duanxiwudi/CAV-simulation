@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Oct 31 22:22:43 2019
-
 @author: xiduan
 """
 
 # -*- coding: utf-8 -*-
 """
 Created on Fri Oct 19 10:25:09 2018
-
 @author: xiduan
 """
 import win32com.client as com
@@ -37,6 +35,8 @@ sendMessage = False # this is to avoid breaking the code for now.
 # define the the column names of the output csv file
 out_DataType_Traj=['Time Stamp','Vehicle ID', 'Vehicle Type', 'Vehicle Length','Vehicle Front Coordinate','Vehicle Rear Coordinate','Speed','Acceleration','Headway','Lane']
 out_DataType_Signal=['Time Stamp','Signal head ID','Color','Latitude','Longitude','X','Y']
+
+out_DataType_CVModel = ["No", "Pos", "Speed","pos_rms", "speed_rms", "veh_type", "veh_length", "max_accel", "max_decel"]
 # the dictionary to change the default output data from vissim to required output data 
 table_vehicle_type = dict({'100':"Passenger Car",'200':"Passenger Truck",'300':"Transit Bus",'400':"Tram",'630':"Passenger Car"})
 table_signal_color = dict({'RED':0, 'AMBER':1, "GREEN":2}) 
@@ -148,6 +148,7 @@ def leading(lead_vehicle_id,data_set ):
 #create the dataframe for output
 log_col = ['time','No', 'VehType', 'pos','acceleration',' speed','leading pos', 'leading speed', 'leading acc','leading length','headway','Lane','design_acceleration', 'state']
 log_file = pd.DataFrame(columns = log_col)
+CV_data = pd.DataFrame(columns = out_DataType_CVModel)
 log_file.to_csv(Path_output_file + "log.csv",  index = None,  mode='w')
 dataSet_traj = pd.DataFrame(columns=out_DataType_Traj)
 # initiate the simulation parameters
@@ -210,6 +211,13 @@ while time_step < simulation_duration:
         
         speed_x = speed_data.loc[:, "x_coor_curr"] - speed_data.loc[:, "x_coor_prev"]
         speed_y = speed_data.loc[:, "y_coor_curr"] - speed_data.loc[:, "y_coor_prev"]
+        speed_coor = [[speed_x[i], speed_y[i]] for i in range(len(speed_x))]
+        add_data_traj["speed_coor"] = speed_coor
+        CV_data = add_data_traj.loc[:, ["Vehicle ID", "Vehicle Front Coordinate","speed_coor", "nan", "nan", "Vehicle Type", "Vehicle Length"] ]
+        CV_data["max_acc"] = max_acc
+        CV_data["max_decce"] = max_dec
+        CV_data["Vehicle Front Coordinate"] = [ i.split()[0:2] for i in (CV_data.loc[:, "Vehicle Front Coordinate"])]
+        
         pre_data_traj = add_data_traj
         
 # deque([[VehicleMsg(timestamp=datetime.datetime(2020, 2, 17, 19, 40, 11, 301205), track_id='0', dsrc_id='2000000', pos=[372090.75, 3279903.07], vel=[0.14, -0.75], pos_rms=[0.0, 0.0], vel_rms=[0.0, 0.0], veh_type=0, veh_len=4.57, max_accel=3.05, max_decel=-4.57, road='Default')]], maxlen=1)        
@@ -284,17 +292,10 @@ while time_step < simulation_duration:
         """
         if sendMessage:
 #            print('hi')
-            if len(log_file) > 0:
-                messageManager.send(log_file)
-                
+            if len(CV_data) > 0:
+                messageManager.send(CV_data)
+
 #                print(time_step)
 #                if time_step == 10:
 #                    print(time_step)
 #                    import pdb;pdb.set_trace()
-            
-    
-
-
-
-
-

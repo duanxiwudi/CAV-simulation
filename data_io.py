@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Feb 24 16:04:25 2020
-
 @author: essie-adm-luan
 """
 
@@ -63,15 +62,15 @@ class msgManager:
         msgs = []
         for i in range(0,len(df)):
             msg = [0, #track id
-                   df.loc[i]['No'],
-                   df.loc[i]['No'],
-                   df.loc[i]['No'],
-                   df.loc[i]['No'],
-                   df.loc[i]['No'],
-                   df.loc[i]['No'],
-                   df.loc[i]['No'],
-                   df.loc[i]['No'],
-                   df.loc[i]['No'],
+                   df.iloc[i][0],
+                   df.iloc[i][1],
+                   df.iloc[i][2],
+                   df.iloc[i][3],
+                   df.iloc[i][4],
+                   df.iloc[i][5],
+                   df.iloc[i][6],
+                   df.iloc[i][7],
+                   df.iloc[i][8],
                    
                    
                     ]
@@ -82,6 +81,3 @@ class msgManager:
     def send(self,df):
         msgs = self.messageBuilder(df)
         self.groupAndPublish(msgs)
-        
-        
-
