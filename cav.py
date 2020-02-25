@@ -78,6 +78,8 @@ wb_lane =1
 sb_lane = 2
 lane_to_cor = {eb_lane : eb_coor, nb_lane :  nb_coor, wb_lane: wb_coor, sb_lane : sb_coor }
 store_speed = pd.DataFrame(columns = ["Vehicle ID","x speed", "y speed"])
+vehicle_type_dict = {"Passenger Car" : 0}
+
 #--------------------------------------------------------------
 ## Load a Vissim Network:
 Filename                = os.path.join(Path_of_COM_Basic_Commands_network,Network_file)
@@ -217,7 +219,7 @@ while time_step < simulation_duration:
         CV_data["max_acc"] = max_acc
         CV_data["max_decce"] = max_dec
         CV_data["Vehicle Front Coordinate"] = [ i.split()[0:2] for i in (CV_data.loc[:, "Vehicle Front Coordinate"])]
-        
+        CV_data.replace(vehicle_type_dict, inplace = True)
         pre_data_traj = add_data_traj
         
 # deque([[VehicleMsg(timestamp=datetime.datetime(2020, 2, 17, 19, 40, 11, 301205), track_id='0', dsrc_id='2000000', pos=[372090.75, 3279903.07], vel=[0.14, -0.75], pos_rms=[0.0, 0.0], vel_rms=[0.0, 0.0], veh_type=0, veh_len=4.57, max_accel=3.05, max_decel=-4.57, road='Default')]], maxlen=1)        
@@ -294,7 +296,6 @@ while time_step < simulation_duration:
 #            print('hi')
             if len(CV_data) > 0:
                 messageManager.send(CV_data)
-
 #                print(time_step)
 #                if time_step == 10:
 #                    print(time_step)
