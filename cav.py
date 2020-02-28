@@ -24,7 +24,6 @@ os.chdir(currentDir)
 msgCfgFile = os.path.join(currentDir, "data_io_config", "Local_RIO_Vissim.yml")
 messageManager = msgManager(msgCfgFile)
 
-
 sendMessage = False # this is to avoid breaking the code for now. 
 
 
@@ -167,6 +166,9 @@ pre_data_traj = pd.DataFrame(columns = out_DataType_Traj)
 speed_vehicle = pd.DataFrame(columns = ["Vehicle ID", "Split Speed"])
 
 #-------------------------------------- start simulation
+#  Random_Seed = 42
+#  Vissim.Simulation.SetAttValue('RandSeed', Random_Seed)
+#
 while time_step < simulation_duration:
     all_veh_attributes = Vissim.Net.Vehicles.GetMultipleAttributes((get_DataType_traj))  
 # select_vehicles,add_data_traj, dataSet_traj  are for emission model purpose            
@@ -203,7 +205,7 @@ while time_step < simulation_duration:
         speed_cal_curr["y_coor_curr"] = [float(speed_cal_curr.loc[:, "Vehicle Front Coordinate"][i].split()[1]) for i in range(speed_cal_curr.shape[0]) ]
         speed_cal_prev["x_coor_prev"] = [float(speed_cal_prev.loc[:, "Vehicle Front Coordinate"][i].split()[0]) for i in range(speed_cal_prev.shape[0]) ]
         speed_cal_prev["y_coor_prev"] = [float(speed_cal_prev.loc[:, "Vehicle Front Coordinate"][i].split()[1]) for i in range(speed_cal_prev.shape[0]) ]
-        speed_data = pd.merge(speed_cal_curr,speed_cal_prev,   on = "Vehicle ID", how = "outer")
+        speed_data = pd.merge(speed_cal_curr,speed_cal_prev,   on = "Vehicle ID", how = "left")
 # check if there are any vehicles just join the network, which does not have prev_coor values
         if (speed_data.loc[:, "x_coor_prev"].isnull()).any() :
             for i in speed_data.loc[speed_data.loc[:, "x_coor_prev"].isnull()].index:
@@ -300,3 +302,15 @@ while time_step < simulation_duration:
 #                if time_step == 10:
 #                    print(time_step)
 #                    import pdb;pdb.set_trace()
+
+'''
+Signal control part
+
+SC_number = 1
+SG_number = 1
+SignalController = Vissim.Net.SignalControllers.ItemByKey(SC_number)
+SignalGroup = SignalController.SGs.ItemByKey(SG_number)
+SignalGroup.SetAttValue("SigState", "GREEN")
+SignalGroup.SetAttValue("ContrByCOM", False)
+
+'''
