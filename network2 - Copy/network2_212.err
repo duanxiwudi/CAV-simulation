@@ -1,0 +1,4 @@
+                     Note	Edit evaluation configuration
+                    Error	This action cannot be performed during simulation.
+                  Warning	Vehicle input 1 could not be finished completely (remain: 12 vehicles).	Network object type: Vehicle Input	Network object keys: 1
+                  Warning	Vehicle input 4 could not be finished completely (remain: 7 vehicles).	Network object type: Vehicle Input	Network object keys: 4

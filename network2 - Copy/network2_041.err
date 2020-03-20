@@ -1,0 +1,16 @@
+                    Error	CCOMSignalHeadContainerBase<CSignalHeadManager>::get_ItemByKey failed: object does not exist
+                    Error	CCOMSignalHeadContainerBase<CSignalHeadManager>::get_ItemByKey failed: object does not exist
+                    Error	CCOMSignalHeadContainerBase<CSignalHeadManager>::get_ItemByKey failed: object does not exist
+                    Error	SIGNALHEAD: Could not find attribute with ID COUNT.
+                    Error	SIGNALHEAD: Could not find attribute with ID ['NO', 'NAME'].
+                    Error	SIGNALHEAD: Could not find attribute with ID ['SIGSTATE'].
+                    Error	SIGNALHEAD: Could not find attribute with ID ['SIGSTATE'].
+                    Error	SIGNALHEAD: Could not find attribute with ID ['SIGSTATE', ''].
+                    Error	SIGNALHEAD: Could not find attribute with ID ['SIGSTATE'].
+                    Error	CCOMSignalHeadContainerBase<CSignalHeadManager>::get_ItemByKey failed: object does not exist
+                    Error	CCOMSignalHeadContainerBase<CSignalHeadManager>::get_ItemByKey failed: object does not exist
+                    Error	SIGNALHEAD: Could not find attribute with ID ['SIGSTATE', 'NO'].
+                    Error	SIGNALHEAD: Could not find attribute with ID ['SIGSTATE', 'NO'].
+                    Error	CComBaseContainer::GetMultipleAttributes failed: SIGNALHEAD: Could not find attribute with ID PO.
+                    Error	CComBaseContainer::GetMultipleAttributes failed: SIGNALHEAD: Could not find attribute with ID POSITION.
+                    Error	CComBaseContainer::GetMultipleAttributes failed: SIGNALHEAD: Could not find attribute with ID COORDINATE.

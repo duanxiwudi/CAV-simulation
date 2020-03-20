@@ -1,0 +1,4 @@
+              fatal error	ExceptionCode = 3221225477 ExceptionFlags = 0 ExceptionAddress = 00007FFAF2FE0ED0
+                  Warning	Vehicle input 1 could not be finished completely (remain: 5 vehicles).	Network object type: Vehicle Input	Network object keys: 1
+              fatal error	Critical error in Vissim during a COM call.
+              fatal error	ExceptionCode = 3221225477 ExceptionFlags = 16 ExceptionAddress = 00007FFB34AB269D

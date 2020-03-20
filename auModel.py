@@ -69,7 +69,7 @@ class AV_Model ():
         s_safe = (self.v_n_1)**2 / 2* (1 / self.d_n -  1 / self.d_n_1)
         
         s_system =  self.v_n *  self.tau
-        s_min = 2
+        s_min = 1.5 + self.l_n_1
         s_ref = np.max([s_system,s_safe,s_min])
         
         acc_t  =  self.k_a *  self.a_n_1  +  self.k_v * ( self.v_n_1 - self.v_n) + self.k_d * ((self.x_n_1 - self.x_n)  - s_ref)

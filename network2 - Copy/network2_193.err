@@ -1,0 +1,4 @@
+                  Warning	Simulation second 16.3: Vehicle 3 (on Static Vehicle Route 4 - 3) arrived at the end of link 2: in_North without having found the next link (10009) of its route.	Network object type: Vehicle	Network object keys: 3
+                  Warning	Simulation second 58.7: Vehicle 48 (on Static Vehicle Route 2 - 3) arrived at the end of link 3: in_South without having found the next link (10005) of its route.	Network object type: Vehicle	Network object keys: 48
+                  Warning	Simulation second 90.1: Vehicle 56 (on Static Vehicle Route 1 - 3) arrived at the end of link 4: in_West without having found the next link (10001) of its route.	Network object type: Vehicle	Network object keys: 56
+                  Warning	Simulation second 92.2: Vehicle 84 (on Static Vehicle Route 3 - 1) arrived at the end of link 1: in_East without having found the next link (10007) of its route.	Network object type: Vehicle	Network object keys: 84

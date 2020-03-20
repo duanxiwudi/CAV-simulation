@@ -1,0 +1,4 @@
+                  Warning	Simulation second 161.5: After 60.0 seconds of waiting for lane change the vehicle 92 (on Static Vehicle Route 4 - 3) was removed from link 2 at position 118.9.	Network object type: Vehicle	Network object keys: 92
+                  Warning	Simulation second 231.1: After 60.0 seconds of waiting for lane change the vehicle 139 (on Static Vehicle Route 1 - 1) was removed from link 4 at position 152.9.	Network object type: Vehicle	Network object keys: 139
+                  Warning	Simulation second 315.1: After 60.0 seconds of waiting for lane change the vehicle 245 (on Static Vehicle Route 2 - 1) was removed from link 3 at position 118.0.	Network object type: Vehicle	Network object keys: 245
+                  Warning	Vehicle input 1 could not be finished completely (remain: 7 vehicles).	Network object type: Vehicle Input	Network object keys: 1
