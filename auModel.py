@@ -1,14 +1,13 @@
+
 # -*- coding: utf-8 -*-
 """
 Created on Tue Nov  5 11:17:55 2019
-
 @author: xiduan
 """
 
 # -*- coding: utf-8 -*-
 """
 Created on Mon Nov  4 20:21:47 2019
-
 @author: xiduan
 """
 import numpy as np
@@ -71,7 +70,7 @@ class AV_Model ():
         s_system =  self.v_n *  self.tau
         s_min = 1.5 + self.l_n_1
         s_ref = np.max([s_system,s_safe,s_min])
-        
+       
         acc_t  =  self.k_a *  self.a_n_1  +  self.k_v * ( self.v_n_1 - self.v_n) + self.k_d * ((self.x_n_1 - self.x_n)  - s_ref)
         # delta_x is the space
         delta_x = np.min([(self.x_n_1 - self.x_n - self.l_n_1) + self.v_n * self.tau - self.v_n_1**2 /2 / self.d_n_1,self.de_x])
@@ -84,8 +83,3 @@ class AV_Model ():
       
         
         return acc
-    
-    
-
-
-
